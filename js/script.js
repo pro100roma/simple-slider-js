@@ -3,17 +3,17 @@ window.addEventListener('DOMContentLoaded', function() {
     'use strict';
 
     //Slider
-    let slideIndex = 1,
-        slides = document.querySelectorAll('.slider-item'),
-        prev = document.querySelector('.prev'),
-        next = document.querySelector('.next'),
-        dotsWrap = document.querySelector('.slider-dots'),
-        dots = document.querySelectorAll('.dot');
+    let slideIndex = 1,                                     //Active slide
+        slides = document.querySelectorAll('.slider-item'), //Arr with Slides blocks
+        prev = document.querySelector('.prev'),             //Previous arrow
+        next = document.querySelector('.next'),             //Next arrow
+        dotsWrap = document.querySelector('.slider-dots'),  //Wrap for dots
+        dots = document.querySelectorAll('.dot');           //Array with Dots
 
     showSlides(slideIndex);
     function showSlides(n) {
 
-        if(n > slides.length) {
+        if(n > slides.length) {     //If slide index > count of slides then go to first slide (Infinite slider)
             slideIndex = 1;
         }
         if(n < 1) {
@@ -21,9 +21,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
 
         slides.forEach((item) => item.style.display = 'none');
-        // for(let i = 0; i < slides.length; i++) {
-        //     slides[i].style.display = 'none';
-        // }
+        
         dots.forEach((item) => item.classList.remove('dot-active'));
         
         slides[slideIndex - 1].style.display = 'block';
@@ -38,10 +36,10 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     prev.addEventListener('click', function() {
-        plusSlides(-1);
+        plusSlides(-1);     //Slide step. Can to use (-2), (-3) ...
     });
     next.addEventListener('click', function() {
-        plusSlides(1);
+        plusSlides(1);      //Slide step. Can to use (2), (3) ...
     });
 
     dotsWrap.addEventListener('click', function(e) {
